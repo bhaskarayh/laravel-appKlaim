@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('integration', function (Blueprint $table) {
+        Schema::connection('penampungan')->create('integration_claims', function (Blueprint $table) {
             $table->id();
             $table->string('sub_cob');
             $table->string('penyebab_klaim');

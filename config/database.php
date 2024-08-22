@@ -63,6 +63,21 @@ return [
             ]) : [],
         ],
 
+        'penampungan' => [
+            'driver' => 'mysql',
+            'host' => env('PENAMPUNGAN_DB_HOST', '127.0.0.1'),
+            'port' => env('PENAMPUNGAN_DB_PORT', '3306'),
+            'database' => env('PENAMPUNGAN_DB_DATABASE', 'penampungan'),
+            'username' => env('PENAMPUNGAN_DB_USERNAME', 'root'),
+            'password' => env('PENAMPUNGAN_DB_PASSWORD', ''),
+            'unix_socket' => env('PENAMPUNGAN_DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
