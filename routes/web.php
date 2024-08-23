@@ -14,9 +14,9 @@ use App\Http\Controllers\ClaimController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/claims', [ClaimController::class, 'index']);
+Route::get('/', [ClaimController::class, 'index']);
 Route::post('/claims/export', [ClaimController::class, 'exportToPenampungan'])->name('claims.export');
