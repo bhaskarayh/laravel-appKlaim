@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('claims', function (Blueprint $table) {
+        Schema::connection('mysql')->create('claims', function (Blueprint $table) {
             $table->id();
             $table->string('sub_cob');
             $table->string('penyebab_klaim');
             $table->date('periode');
             $table->string('id_wilker');
             $table->date('tgl_keputusan_klaim');
-            $table->decimal('jumlah_terjamin', 15, 2);
+            $table->integer('jumlah_terjamin');
             $table->decimal('nilai_beban_klaim', 15, 2);
             $table->string('debet_kredit');
             $table->timestamps();

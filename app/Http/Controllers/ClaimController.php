@@ -23,14 +23,8 @@ class ClaimController extends Controller
             \DB::connection('penampungan')->table('integration_claims')->insert([
                 'sub_cob' => $claim->sub_cob,
                 'penyebab_klaim' => $claim->penyebab_klaim,
-                'id_wilker' => $claim->id_wilker,
                 'periode' => $claim->periode,
                 'nilai_beban_klaim' => $claim->nilai_beban_klaim,
-                'tgl_keputusan_klaim' => $claim->tgl_keputusan_klaim,
-                'jumlah_terjamin' => $claim->jumlah_terjamin,
-                'debet_kredit'=> $claim->debet_kredit,
-                'created_at' => now(),
-                'updated_at' => now(),
             ]);
                 // echo($claim);
         }
@@ -38,15 +32,21 @@ class ClaimController extends Controller
         
 
         // Logging the export activity
-        Log::info('Claims exported to penampungan_db', [
-            'count' => $claims->count(),
-            'timestamp' => now(),
+        // Log::info('Claims exported to penampungan_db', [
+        //     'count' => $claims->count(),
+        //     'timestamp' => now(),
+        // ]);
+        \DB::connection('mysql')->table('log_activity')->insert([
+            'tgl_proses' => now(),
+            'count_data' => $claims->count(),
+            'status' => 'Success'
         ]);
+
 
         // die();
 
-        // return redirect()->back()->with('status', 'Claims exported successfully!');
+        return redirect()->back()->with('status', 'Claims exported successfully!');
 
-        return "xxx";
+        // return "xxx";
     }
 }

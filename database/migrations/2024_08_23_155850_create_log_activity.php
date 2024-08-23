@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::connection('penampungan')->create('integration_claims', function (Blueprint $table) {
+        Schema::connection('mysql')->create('log_activity', function (Blueprint $table) {
             $table->id();
-            $table->string('sub_cob');
-            $table->string('penyebab_klaim');
-            $table->date('periode');
-            $table->decimal('nilai_beban_klaim', 15, 2);
+            $table->date('tgl_proses');
+            $table->integer('count_data');
+            $table->string('status');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('integration');
+        Schema::dropIfExists('log_activity');
     }
 };
